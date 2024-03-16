@@ -1,0 +1,10 @@
+export const basic1 = 33153
+export const basic2 = 67552
+export const common = 89438
+export const middle1 = 186302
+export const middle2 = 234500
+export const premium = 300749
+export const luxury1 = 350497
+export const luxury2 = 409167
+export const luxury3 = 471973
+export const max = 541665
