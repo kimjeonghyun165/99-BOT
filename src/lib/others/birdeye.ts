@@ -1,17 +1,17 @@
 import { Logger } from "@nestjs/common";
 import axios from 'axios';
 
-const API_KEY = process.env.BIRDEYE_API_TOKEN
-
-const config = {
-    headers: {
-        'X-API-KEY': API_KEY
-    }
-};
-
 
 const tokenInfo = async (tokenTikcer: string) => {
     try {
+
+        const API_KEY = process.env.BIRDEYE_API_TOKEN
+
+        const config = {
+            headers: {
+                'X-API-KEY': API_KEY
+            }
+        };
         const birdeyeApiLink =
             "https://public-api.birdeye.so/public/multi_price?list_address=" + tokenTikcer
 

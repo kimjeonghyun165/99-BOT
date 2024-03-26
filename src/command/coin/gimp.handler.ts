@@ -21,24 +21,24 @@ export class gimpHandler {
             const upbitBtc = await axios.get(baseUrl + "KRW-BTC");
             const upbitEth = await axios.get(baseUrl + "KRW-ETH");
             const upbitXrp = await axios.get(baseUrl + "KRW-XRP");
-            const upbitEos = await axios.get(baseUrl + "KRW-EOS");
+            const upbitSol = await axios.get(baseUrl + "KRW-SOL");
 
             const binanceBtc = await axios.get(binanceUrl + "BTCUSDT");
             const binanceEth = await axios.get(binanceUrl + "ETHUSDT");
             const binanceXrp = await axios.get(binanceUrl + "XRPUSDT");
-            const binanceEos = await axios.get(binanceUrl + "EOSUSDT");
+            const binanceSol = await axios.get(binanceUrl + "SOLUSDT");
 
             var currency: number = await krwtoUsd();
 
             const upbitBtcPrice: number = upbitBtc.data[0].trade_price;
             const upbitEthPrice: number = upbitEth.data[0].trade_price;
             const upbitXrpPrice: number = upbitXrp.data[0].trade_price;
-            const upbitEosPrice: number = upbitEos.data[0].trade_price;
+            const upbitSolPrice: number = upbitSol.data[0].trade_price;
 
             const binanceBtcPrice: number = Math.round(binanceBtc.data.price / currency);
             const binanceEthPrice: number = Math.round(binanceEth.data.price / currency);
             const binanceXrpPrice: number = Math.round(binanceXrp.data.price / currency);
-            const binanceEosPrice: number = Math.round(binanceEos.data.price / currency);
+            const binanceSolPrice: number = Math.round(binanceSol.data.price / currency);
 
 
             const btcPremium =
@@ -47,13 +47,13 @@ export class gimpHandler {
                 Math.round(((upbitEthPrice / binanceEthPrice) - 1) * 10000) / 100;
             const xrpPremium =
                 Math.round(((upbitXrpPrice / binanceXrpPrice) - 1) * 10000) / 100;
-            const eosPremium =
-                Math.round(((upbitEosPrice / binanceEosPrice) - 1) * 10000) / 100;
+            const solPremium =
+                Math.round(((upbitSolPrice / binanceSolPrice) - 1) * 10000) / 100;
 
             const btcPremiumStr: string | number = btcPremium > 0 ? "+" + btcPremium : btcPremium;
             const ethPremiumStr: string | number = ethPremium > 0 ? "+" + ethPremium : ethPremium;
             const xrpPremiumStr: string | number = xrpPremium > 0 ? "+" + xrpPremium : xrpPremium;
-            const eosPremiumStr: string | number = eosPremium > 0 ? "+" + eosPremium : eosPremium;
+            const solPremiumStr: string | number = solPremium > 0 ? "+" + solPremium : solPremium;
 
             let output = "[김치프리미엄]\n━━━━━━━━━━━━━━\n";
             output += "* BTC : " + btcPremiumStr + "%\n";
@@ -65,9 +65,9 @@ export class gimpHandler {
             output += "* XRP : " + xrpPremiumStr + "%\n";
             output += " ㄴ 업비트 : " + upbitXrpPrice.toLocaleString('ko-KR') + " 원\n";
             output += " ㄴ 바이낸스 : " + binanceXrpPrice.toLocaleString('ko-KR') + " 원\n\n";
-            output += "* EOS : " + eosPremiumStr + "%\n";
-            output += " ㄴ 업비트 : " + upbitEosPrice.toLocaleString('ko-KR') + " 원\n";
-            output += " ㄴ 바이낸스 : " + binanceEosPrice.toLocaleString('ko-KR') + " 원";
+            output += "* SOL : " + solPremiumStr + "%\n";
+            output += " ㄴ 업비트 : " + upbitSolPrice.toLocaleString('ko-KR') + " 원\n";
+            output += " ㄴ 바이낸스 : " + binanceSolPrice.toLocaleString('ko-KR') + " 원";
 
             await msg.replyText(output);
         }

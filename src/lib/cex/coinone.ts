@@ -31,7 +31,7 @@ const tokenInfo = async (tokenTicker: string) => {
     } catch (e) {
         Logger.error(e)
         return {
-            currentUsdPirce: -1,
+            currentKrwPirce: -1,
             changeRate: -1,
             high_price: -1,
             low_price: -1,

@@ -4,6 +4,7 @@ import { coinNessHandler } from './coinness/coinness.handler';
 import { ICommandHandler } from './ICommandHandler';
 import { superWalkDetailHandler } from './superwalk/detail.handler';
 import { fideLionDetailHandler } from './fidelion/detail.handler'
+import { ahoyDetailHandler } from './ahoy/detail.handler';
 
 @Injectable()
 export class Command2Service {
@@ -14,6 +15,7 @@ export class Command2Service {
         private readonly coinNessHandler: coinNessHandler,
         private readonly superWalkDetail: superWalkDetailHandler,
         private readonly fideLionDetail: fideLionDetailHandler,
+        private readonly ahoyDetail: ahoyDetailHandler,
 
     ) {
         this.commandHandlers = [
@@ -40,6 +42,14 @@ export class Command2Service {
     }
 
     async fideLionDetailHandler(client: UDPServer, address: any) {
+        try {
+            this.fideLionDetail.execute(client, address)
+        } catch (error) {
+            Logger.error(error.message, error.stack);
+        }
+    }
+
+    async ahoyDetailHandler(client: UDPServer, address: any) {
         try {
             this.fideLionDetail.execute(client, address)
         } catch (error) {

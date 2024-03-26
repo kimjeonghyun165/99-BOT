@@ -1,3 +1,4 @@
+import { ConfigService } from '@nestjs/config/dist/config.service';
 import { NestFactory } from '@nestjs/core';
 import { UDPServer } from '@remote-kakao/core';
 import { AppModule } from './app.module';
@@ -6,7 +7,6 @@ import { Command2Service } from './command2/command2.service';
 import { LoginService } from './login/login.service';
 import { RoomService } from './room/room.service';
 import { UsersService } from './users/users.service';
-import { config } from 'dotenv';
 
 const schedule = require('node-schedule');
 
@@ -16,7 +16,6 @@ interface KakaoLoginResult {
 }
 
 async function bootstrap() {
-  config();
   const app = await NestFactory.create(AppModule);
   const loginService = app.get(LoginService);
   const commandService = app.get(CommandService)
@@ -34,6 +33,7 @@ async function bootstrap() {
     roomService.room(kakaoClient);
     command2Service.superWalkDetailHandler(kakaoClient, address);
     command2Service.fideLionDetailHandler(kakaoClient, address);
+    command2Service.ahoyDetailHandler(kakaoClient, address);
     setInterval(command2, 30000);
     schedule.scheduleJob('0 0 * * *', userService.resetDayCount.bind(this));
     schedule.scheduleJob('0 0 1 * *', userService.resetMonthCount.bind(this));

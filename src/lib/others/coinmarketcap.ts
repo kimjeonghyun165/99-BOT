@@ -1,10 +1,11 @@
 import { Logger } from "@nestjs/common";
 import axios from 'axios';
 
-const API_KEY = process.env.COINMARKETCAP_API_TOKEN
-
 const tokenInfo = async (tokenTikcer: string) => {
   try {
+
+    const API_KEY = process.env.COINMARKETCAP_API_TOKEN
+
     const comarketcapApiLink =
       "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?CMC_PRO_API_KEY=" +
       API_KEY +

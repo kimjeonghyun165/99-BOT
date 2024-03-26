@@ -52,12 +52,12 @@ export class fidelCombinationHandler {
                 ` ㄴ USD : ${(premium * toothpastePrice).toLocaleString('en')} $\n\n`;
             output +=
                 '#럭셔리-1\n' +
-                '*(90-76-60 / 치약 : ' + luxury1.toLocaleString('en') + ' 개)\n' +
+                '*(61-76-60 / 치약 : ' + luxury1.toLocaleString('en') + ' 개)\n' +
                 ` ㄴ KRW : ${Number((luxury1 * toothpasteKrwPrice).toFixed(0)).toLocaleString('en')} 원\n` +
                 ` ㄴ USD : ${(luxury1 * toothpastePrice).toLocaleString('en')} $\n\n`;
             output +=
                 '#럭셔리-2\n' +
-                '*(90-76-60 / 치약 : ' + luxury2.toLocaleString('en') + ' 개)\n' +
+                '*(76-76-60 / 치약 : ' + luxury2.toLocaleString('en') + ' 개)\n' +
                 ` ㄴ KRW : ${Number((luxury2 * toothpasteKrwPrice).toFixed(0)).toLocaleString('en')} 원\n` +
                 ` ㄴ USD : ${(luxury2 * toothpastePrice).toLocaleString('en')} $\n\n`;
             output +=

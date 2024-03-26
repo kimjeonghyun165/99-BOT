@@ -24,7 +24,7 @@ export class marketingHandler {
                 const msginput = cmd.slice(4).split("|")[0];
                 const msginput2 = cmd.split("|")[1];
 
-                var output = "🕊️ 구구 광고 🕊️\n\n"
+                var output = "🕊️ 구구 정보통 🕊️\n\n"
                 output += msginput + "\u200b".repeat(500) + "\n\n"
                 output += msginput2
                 output += "\n\n━━━━━━━━━━━━━━\n"
@@ -40,7 +40,7 @@ export class marketingHandler {
                     .filter(room => room.serialNum !== "18392000720314681")
                     .map(room => room.serialNum);
 
-                var output = "🕊️ 구구 광고 🕊️\n\n"
+                var output = "🕊️ 구구 정보통 🕊️\n\n"
                 output += msginput + "\u200b".repeat(500) + "\n\n"
                 output += msginput2
                 output += "\n\n━━━━━━━━━━━━━━\n"

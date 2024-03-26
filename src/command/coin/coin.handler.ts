@@ -46,7 +46,7 @@ export class coinHandler {
             binanceOutput += " ㄴ 고가 : " + Math.round(tokenInfo[3].high_price * 10000) / 10000 + " USD\n";
             binanceOutput += " ㄴ 저가 : " + Math.round(tokenInfo[3].low_price * 10000) / 10000 + " USD\n";
 
-            var mexcOutput = "MEXC : " + (tokenInfo[2].changeRate).toFixed(1) + " %\n";
+            var mexcOutput = "MEXC : " + (tokenInfo[4].changeRate) + " %\n";
             mexcOutput += " ㄴ 현재가 : " + Math.round(tokenInfo[4].currentUsdPirce * 10000) / 10000 + " USD\n";
             mexcOutput += " ㄴ 고가 : " + Math.round(tokenInfo[4].high_price * 10000) / 10000 + " USD\n";
             mexcOutput += " ㄴ 저가 : " + Math.round(tokenInfo[4].low_price * 10000) / 10000 + " USD\n";
@@ -68,7 +68,7 @@ export class coinHandler {
             const outputArray: string[] = [];
             tokenInfo[0].currentKrwPirce !== -1 ? outputArray.push(upbitOutput) : null
             tokenInfo[1].currentKrwPirce !== -1 ? outputArray.push(bithumbOutput) : null
-            tokenInfo[2].currentUsdPirce !== -1 ? outputArray.push(coinoneOutput) : null
+            tokenInfo[2].currentKrwPirce !== -1 ? outputArray.push(coinoneOutput) : null
             tokenInfo[3].currentUsdPirce !== -1 ? outputArray.push(binanceOutput) : null
             tokenInfo[4].currentUsdPirce !== -1 ? outputArray.push(mexcOutput) : null
             tokenInfo[5].currentUsdPirce !== -1 ? outputArray.push(bybitOutput) : null
