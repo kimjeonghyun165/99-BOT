@@ -4,13 +4,11 @@
 
 99-bot은 코인 및 NFT 관련 정보를 신속하게 제공하는 카카오톡 봇입니다. 최신 시세, 트렌드, 및 유용한 정보를 쉽게 얻을 수 있어 투자자들에게 가치 있는 툴로서의 역할을 합니다.
 
-이 봇은 사용자들에게 실시간으로 코인 및 NFT 관련 정보를 제공하여 효율적인 투자 결정을 도와줍니다. 주식 시세, 환율, 코인 가격 등의 정보뿐만 아니라 공모주 일정, NFT 프로젝트 정보, 김치 프리미엄, 이더리움 가스 수수료 등 다양한 정보를 쉽게 확인할 수 있습니다.
+주식 시세, 환율, 코인 가격 등의 정보뿐만 아니라 공모주 일정, NFT 프로젝트 정보, 김치 프리미엄, 이더리움 가스 수수료 등 다양한 정보를 쉽게 확인할 수 있습니다.
 
-또한, 99-bot은 각종 재미있는 기능도 제공합니다. 구구야와 대화하거나, 한강 온도와 명언을 받아보거나, 랜덤 메뉴 추천부터 로또 번호 추첨까지 다양한 기능을 통해 사용자들에게 재미와 유용함을 제공합니다.
+또한, 99-bot은 각종 재미있는 기능도 제공합니다. GPT와 연동되어 있어 구구와 대화하거나, 한강 온도와 명언을 받아보거나, 랜덤 메뉴 추천부터 로또 번호 추첨까지 다양한 기능을 통해 사용자들에게 재미와 유용함을 제공합니다.
 
-더불어, 99-bot은 Move to Earn(M2E) 프로젝트에 대한 정보도 제공하여 사용자들이 새로운 경제 모델에 대해 이해하고 참여할 수 있도록 돕습니다.
-
-지금 99-bot을 추가하여 더 스마트한 투자와 더 즐거운 채팅을 경험해보세요!
+더불어, 99-bot은 특정 프로젝트에 대한 정보도 제공하여 해당 프로젝트를 이용하는 사용자들에게 프로젝트 모델에 대해 이해하고 참여할 수 있도록 돕습니다.
 
 ### 스택
 
@@ -60,19 +58,3 @@ BIRDEYE_API_TOKEN = process.env.BIRDEYE_API_TOKEN
 에뮬레이터를 이용한 환경 구성을 권장합니다. [리드로이드](https://github.com/remote-android/redroid-doc)는 안정적이며 다양한 설정이 가능하여 테스트 및 개발 시에 유용하게 활용할 수 있습니다.
 
 이렇게 구성된 다중 SNS 브릿지 봇은 타입스크립트와 NestJS, 몽고디비를 기반으로 안정적이고 확장 가능한 아키텍처를 구축하여 다양한 프로젝트에 유연한 소통 경로를 제공합니다.
-
----
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
