@@ -1,4 +1,4 @@
-![img](/flowChart.png)
+![img](public/flowChart.png)
 
 # 99-bot 소개
 
