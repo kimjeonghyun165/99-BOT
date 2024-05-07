@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Message } from '@remote-kakao/core';
-import { krwtooUsd, krwtoUsd } from '../../../lib/utils';
-import { walkInfo, grndInfo, frcInfo, trcInfo, fitInfo, awmInfo } from '../tokenInfo';
+import { krwtoUsd } from 'src/lib/utils';
+import { walkInfo, grndInfo, awmInfo, gstInfo, gmtInfo, usdtInfo } from '../tokenInfo';
 
 @Injectable()
 export class m2eCoinInfoHandler {
@@ -14,13 +14,12 @@ export class m2eCoinInfoHandler {
 
     async execute(msg: Message): Promise<void> {
         try {
-            const currency = await krwtoUsd();
-            const currency2 = await krwtooUsd();
+            const currency = (await usdtInfo()).usdtPrice;
+            const currency2 = await krwtoUsd();
             const walk = await walkInfo();
             const grnd = await grndInfo();
-            const frc = await frcInfo();
-            const trc = await trcInfo();
-            const fit = await fitInfo();
+            const gmt = await gmtInfo();
+            const gst = await gstInfo();
             const awm = await awmInfo();
 
             const aRate =
@@ -32,18 +31,18 @@ export class m2eCoinInfoHandler {
 
 
             const ffRate =
-                Number(fit.fitRate) > 0
-                    ? "📈+" + Number(fit.fitRate)
-                    : Number(fit.fitRate) < 0
-                        ? "📉" + Number(fit.fitRate)
-                        : "📊" + Number(fit.fitRate)
+                Number(gmt.gmtRate) > 0
+                    ? "📈+" + Number(gmt.gmtRate)
+                    : Number(gmt.gmtRate) < 0
+                        ? "📉" + Number(gmt.gmtRate)
+                        : "📊" + Number(gmt.gmtRate)
 
             const fRate =
-                Number(frc.frcRate) > 0
-                    ? "📈" + frc.frcRate
-                    : Number(frc.frcRate) < 0
-                        ? "📉" + frc.frcRate
-                        : "📊" + frc.frcRate;
+                Number(gst.gstRate) > 0
+                    ? "📈" + gst.gstRate
+                    : Number(gst.gstRate) < 0
+                        ? "📉" + gst.gstRate
+                        : "📊" + gst.gstRate;
 
             const wRate =
                 Number(walk.walkRate) > 0
@@ -58,13 +57,6 @@ export class m2eCoinInfoHandler {
                     : Number(grnd.grndRate) < 0
                         ? "📉" + grnd.grndRate
                         : "📊" + grnd.grndRate;
-
-            const tRate =
-                Number(trc.trcRate) > 0
-                    ? "📈" + trc.trcRate
-                    : Number(trc.trcRate) < 0
-                        ? "📉" + trc.trcRate
-                        : "📊" + trc.trcRate;
 
             var output = "[M2E Info]\n";
             output += "━━━━━━━━━━━━━━\n";
@@ -81,24 +73,17 @@ export class m2eCoinInfoHandler {
                 (grnd.grndPrice[0] / currency2).toFixed(2) +
                 " 원\n\n";
             output +=
-                "* FRC : " +
+                "* GST : " +
                 fRate +
                 "%\n ㄴ KRW : " +
-                (frc.frcPrice / currency).toFixed(2) +
+                (gst.gstPrice * currency).toFixed(2) +
                 " 원\n\n";
 
             output +=
-                "* FIT : " +
+                "* GMT : " +
                 ffRate +
                 "%\n ㄴ KRW : " +
-                (fit.fitPrice / currency).toFixed(2) +
-                " 원\n\n";
-
-            output +=
-                "* TRC : " +
-                tRate +
-                "%\n ㄴ KRW : " +
-                (trc.trcPrice / currency).toFixed(2) +
+                (gmt.gmtPrice * currency).toFixed(2) +
                 " 원\n\n";
 
             output +=

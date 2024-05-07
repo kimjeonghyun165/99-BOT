@@ -3,19 +3,19 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Message } from '@remote-kakao/core';
 import { Model } from 'mongoose';
 import { tokenInfo } from 'src/lib/cex/binance';
-import { krwtoUsd, nftInfo } from 'src/lib/utils'
-import { Opensea } from './opensea.schemas';
+import { krwtoUsd, openseaInfo } from 'src/lib/utils'
+import { Opensea } from '../nft.schemas';
 
 
 
 @Injectable()
-export class nftInfoHandler {
+export class openseaInfoHandler {
     constructor(
         @InjectModel('Opensea') private readonly openseaModel: Model<Opensea>,
     ) { }
 
-    name = '//'
-    regex = new RegExp(`^//`);
+    name = '오 '
+    regex = new RegExp(`^오 `);
 
     test(content: string): boolean {
         return this.regex.test(content);
@@ -31,7 +31,7 @@ export class nftInfoHandler {
                 return
             }
 
-            const html: any = (await nftInfo(existingData.link))
+            const html: any = (await openseaInfo(existingData.link))
             const data = html.data.total;
             const chain = data.floor_price_symbol
             const floor_price = data.floor_price;

@@ -1,5 +1,6 @@
-export { coinHandler } from './coin.handler'
+export { cexHandler } from './cex.handler'
 export { domiHandler } from './domi.handler'
-export { exchangeHandler } from './exchange.handler'
 export { gewiHandler } from './gas.handler'
 export { gimpHandler } from './gimp.handler'
+export { longShortHandler } from './longShort'
+export { dexHandler } from './dex.handler'

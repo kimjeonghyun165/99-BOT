@@ -57,22 +57,17 @@ export async function sendStockInfo(
 export async function krwtoUsd() {
     const krwusd = "https://api.swapscanner.io/api/forex";
     const html = await axios.get(krwusd);
-    const currency = await html.data["KRW"];
+    const currency = await html.data["KRW_BITHUMB"];
 
     return currency
 }
 
 export async function krwtooUsd() {
-    const krwfromUsd = await krwtoUsd()
-
-    const krwusd =
-        "https://api.geckoterminal.com/api/v2/networks/klaytn/pools/0x491f41777fbe05eb4c5d0687e21718d2cc4d6a09";
-
+    const krwusd = "https://api.swapscanner.io/api/forex";
     const html = await axios.get(krwusd);
+    const currency = await html.data["KRW"];
 
-    const currency = await html.data.data.attributes.quote_token_price_usd;
-
-    return (krwfromUsd / currency)
+    return currency
 
 }
 
@@ -126,7 +121,7 @@ export async function findMany<T>(model: Model<T>, searchQuery: any): Promise<T[
 
 
 
-export async function nftInfo(link: string) {
+export async function openseaInfo(link: string) {
     try {
         const html = await axios.get(
             "https://api.opensea.io/api/v2/collections/" + link + "/stats", {
@@ -135,6 +130,18 @@ export async function nftInfo(link: string) {
                 Accept: "application/json",
             },
         }
+        );
+        return html;
+    }
+    catch (error) {
+        Logger.error(error.message, error.stack);
+    }
+}
+
+export async function magicEdenInfo(link: string) {
+    try {
+        const html = await axios.get(
+            "https://api-mainnet.magiceden.dev/v2/collections/" + link + "/stats"
         );
         return html;
     }
@@ -188,4 +195,46 @@ export const getStatusArray = (backFire: number, fortune: number, regular: numbe
     }
 
     return statusArray;
+}
+
+
+export const extractNumbersFromString = async (text: string) => {
+    try {
+        const pattern = /[+-]?\d+(\.\d+)?/g;
+        const matches = text.match(pattern);
+        const numbers = matches ? matches.map(Number) : [];
+        return numbers;
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
+
+
+export const gewitoEth = (value: number) => {
+    const result = value / 1000000000;
+    return result;
+}
+
+
+export function formatTimeDifference(timestamp1, timestamp2) {
+
+    const diff = Math.abs(timestamp2 - timestamp1);
+
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const weeks = Math.floor(days / 7);
+
+    if (weeks >= 1) {
+        return `${days}일`;
+    }
+    else if (days >= 1) {
+        return `${days}일 ${hours}시간`
+    }
+
+    else {
+        return `${hours}시간 ${minutes}분 ${seconds}초`;
+    }
 }

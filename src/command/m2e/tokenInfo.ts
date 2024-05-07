@@ -15,6 +15,9 @@ const grndContract = "0x84f8c3c8d6ee30a559d73ec570d574f671e82647";
 const klayContract = "0x0000000000000000000000000000000000000000";
 const trcContract = "0x7399c6dba80b6f6a36a8f6f20053a1a9a615dab9";
 const awmContract = "0x3043988aa54bb3ae4da60ecb1dc643c630a564f0";
+const ahoyContract = "0xe0b1a112ee17eF376260Ad347d0D9c38eFDFfe07";
+const gmtContract = "7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx";
+const gstContract = "AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB"
 
 const walkInfo = async () => {
     try {
@@ -146,7 +149,7 @@ const awmInfo = async () => {
 
 const toothpasteInfo = async () => {
     try {
-        const toothpasteInfo = await birdeye(toothpasteContract)
+        const toothpasteInfo = await birdeye(toothpasteContract, "solana")
 
         const toothpastePrice: number = toothpasteInfo.currentUsdPirce
         const toothpasteRate: string = toothpasteInfo.changeRate.toFixed(2);
@@ -175,7 +178,7 @@ const solInfo = async () => {
 
 const dedInfo = async () => {
     try {
-        const dedInfo = await birdeye(dedContract)
+        const dedInfo = await birdeye(dedContract, "solana")
 
         const dedPrice: number = dedInfo.currentUsdPirce
         const dedRate: string = dedInfo.changeRate.toFixed(2);
@@ -187,6 +190,22 @@ const dedInfo = async () => {
     } catch (error) { Logger.error(error.message, error.stack) }
 };
 
+
+//------------------------------------Ahoy-------------------------------------//
+
+const ahoyInfo = async () => {
+    try {
+        const ahoyInfo = await birdeye(ahoyContract, "bsc")
+
+        const ahoyPrice: number = ahoyInfo.currentUsdPirce
+        const ahoyRate: string = ahoyInfo.changeRate.toFixed(2);
+
+        return {
+            ahoyPrice,
+            ahoyRate,
+        };
+    } catch (error) { Logger.error(error.message, error.stack) }
+};
 
 const usdtInfo = async () => {
     try {
@@ -200,4 +219,38 @@ const usdtInfo = async () => {
     } catch (error) { Logger.error(error.message, error.stack) }
 };
 
-export { walkInfo, grndInfo, klayInfo, frcInfo, wemixInfo, trcInfo, fitInfo, awmInfo, solInfo, toothpasteInfo, usdtInfo, dedInfo };
+
+//------------------------------------Stepn-------------------------------------//
+
+const gmtInfo = async () => {
+    try {
+        const gmtInfo = await birdeye(gmtContract, "solana")
+
+        const gmtPrice: number = gmtInfo.currentUsdPirce
+        const gmtRate: string = gmtInfo.changeRate.toFixed(2);
+
+        return {
+            gmtPrice,
+            gmtRate,
+        };
+    } catch (error) { Logger.error(error.message, error.stack) }
+};
+
+const gstInfo = async () => {
+    try {
+        const gstInfo = await birdeye(gstContract, "solana")
+
+        const gstPrice: number = gstInfo.currentUsdPirce
+        const gstRate: string = gstInfo.changeRate.toFixed(2);
+
+        return {
+            gstPrice,
+            gstRate,
+        };
+    } catch (error) { Logger.error(error.message, error.stack) }
+};
+
+export {
+    gstInfo, gmtInfo, walkInfo, grndInfo, klayInfo, frcInfo, wemixInfo,
+    trcInfo, fitInfo, awmInfo, solInfo, toothpasteInfo, usdtInfo, dedInfo, ahoyInfo
+};

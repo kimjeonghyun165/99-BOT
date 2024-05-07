@@ -2,8 +2,8 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Message } from '@remote-kakao/core';
 import { Model } from 'mongoose';
-import { nftInfo } from 'src/lib/utils';
-import { Opensea } from './opensea.schemas';
+import { magicEdenInfo, openseaInfo } from 'src/lib/utils';
+import { Opensea } from './nft.schemas';
 
 @Injectable()
 export class nftRegisterHandler {
@@ -23,18 +23,9 @@ export class nftRegisterHandler {
             const cmd = msg.content.slice(5).split("/")
             const projectName = cmd[0];
             const projectLink = cmd[1];
-            const list = this.openseaModel.find()
 
             const existingLink = await this.openseaModel.findOne({ link: projectLink });
             const existingName = await this.openseaModel.findOne({ name: projectName });
-
-            const checkRealLink = await nftInfo(projectLink)
-
-            if (checkRealLink === null || checkRealLink === undefined) {
-                msg.replyText("유효하지 않는 링크입니다.\n해당 컬렉션의 링크를 다시 확인해주세요.")
-                return
-            }
-
 
             if (existingName) {
                 msg.replyText("다른 줄임말을 등록해주시길 바랍니다.")

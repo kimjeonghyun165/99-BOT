@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Message } from '@remote-kakao/core';
-import { krwtooUsd } from 'src/lib/utils';
+import { krwtoUsd } from 'src/lib/utils';
 import { walkInfo, grndInfo, klayInfo } from '../tokenInfo';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class superWalkCoinInfoHandler {
 
     async execute(msg: Message): Promise<void> {
         try {
-            const currency = await krwtooUsd();
+            const currency = await krwtoUsd();
             const walk = await walkInfo();
             const grnd = await grndInfo();
             const klay = await klayInfo();

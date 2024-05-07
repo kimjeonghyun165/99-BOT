@@ -28,5 +28,3 @@ export const RoomSchema = new Schema<Room>(
     },
     { versionKey: false },
 );
-
-

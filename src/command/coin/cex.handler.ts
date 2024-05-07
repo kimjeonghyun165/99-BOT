@@ -12,7 +12,7 @@ const coinmarketcap = require("../../lib/others/coinmarketcap").tokenInfo;
 
 
 @Injectable()
-export class coinHandler {
+export class cexHandler {
     name = '.'
     regex = new RegExp(`^\\.`);
 
@@ -24,7 +24,9 @@ export class coinHandler {
         try {
             var coin = msg.content.slice(1);
             coin = coin.toUpperCase();
-            const tokenInfo = [await upbit(coin), await bithumb(coin), await coinone(coin), await binance(coin), await mexc(coin), await bybit(coin), await okx(coin), await coinmarketcap(coin)];
+            if (coin.split("")[0] === ".") return
+            const tokenInfo = [await upbit(coin), await bithumb(coin), await coinone(coin), await binance(coin),
+            await mexc(coin), await bybit(coin), await okx(coin), await coinmarketcap(coin)];
 
             var upbitOutput = "업비트 : " + (tokenInfo[0].changeRate * 100).toFixed(1) + " %\n";
             upbitOutput += " ㄴ 현재가 : " + (Math.round(tokenInfo[0].currentKrwPirce * 10) / 10).toLocaleString('en') + " KRW\n";

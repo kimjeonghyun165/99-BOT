@@ -4,8 +4,8 @@ import axios from 'axios';
 const tokenInfo = async (tokenTicker: string) => {
 
     try {
-
-        const upbitapiLink = "https://api.bithumb.com/public/ticker/" + tokenTicker.toUpperCase();
+        const upbitapiLink = "https://api.bithumb.com/public/ticker/"
+            + tokenTicker.toUpperCase();
 
         const html = await axios.get(upbitapiLink)
         const currentKrwPirce: number = Number(await html.data.data.closing_price)

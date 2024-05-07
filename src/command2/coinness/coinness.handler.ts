@@ -18,7 +18,7 @@ export class coinNessHandler implements ICommandHandler {
 
     async execute(client: UDPServer, address: any): Promise<void> {
         try {
-            const news = await axios.get("https://api.coinness.live/v1/news");
+            const news = await axios.get("https://api.coinness.com/feed/v1/news?limit=5");
             const newsData = news.data;
             const title = newsData[0].title;
             const content = newsData[0].content;

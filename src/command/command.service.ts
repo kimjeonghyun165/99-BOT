@@ -6,21 +6,19 @@ import { helpHandler, help2Handler } from './help/index';
 import { menuHandler } from './menu/menu.handler';
 import { tarotHandler, charmHandler } from './tarot/index';
 import { currencyHandler, korStockHandler } from './stock/index';
-import { coinHandler, exchangeHandler, domiHandler, gewiHandler, gimpHandler } from './coin/index';
+import { cexHandler, dexHandler, domiHandler, gewiHandler, gimpHandler, longShortHandler } from './coin/index';
 import {
     sneakersInfoHandler, superWalkCoinInfoHandler, m2eCoinInfoHandler, superWalkLevelHandler, shrCointoKrwHandler,
-    shrKrwtoCoinHandler, fidelionCoinInfoHandler, fidelionNftInfoHandler, fidelLionLevelHandler, fidelCombinationHandler, fidelSimulationHandler
+    shrKrwtoCoinHandler, fidelionCoinInfoHandler, fidelionNftInfoHandler, fidelLionLevelHandler, fidelCombinationHandler, fidelSimulationHandler, ahoyCoinInfoHandler
 } from './m2e/index'
 import { daychatHandler, monthchatHandler, alldaysChatHandler } from './chat/index';
-import { coinnessAlarmHandler, superwalkAlarmHandler } from './alarm';
+import { coinnessAlarmHandler } from './alarm';
 import { marketingHandler } from './announce/marketing';
 import { announceHandler } from './announce/announce';
-import { nftRegisterHandler } from './nft/opensea/register.handler';
-import { nftInfoHandler } from './nft/opensea/nft.handler';
-import { nftListHandler } from './nft/opensea/list.handler';
 import { dayRoomRankHandler } from './chat/roomRank';
 import { korIpoHandler } from './stock/korea/ipo.handler';
 import { superwalkVolumeHandler } from './m2e/superWalk/volume';
+import { magicEdenInfoHandler, nftListHandler, nftRegisterHandler, openseaInfoHandler } from './nft';
 
 @Injectable()
 export class CommandService {
@@ -36,8 +34,8 @@ export class CommandService {
         private readonly charmHandler: charmHandler,
         private readonly currencyHandler: currencyHandler,
         private readonly korStockHandler: korStockHandler,
-        private readonly coinHandler: coinHandler,
-        private readonly exchangeHandler: exchangeHandler,
+        private readonly cexHandler: cexHandler,
+        private readonly dexHandler: dexHandler,
         private readonly domiHandler: domiHandler,
         private readonly gimpHandler: gimpHandler,
         private readonly gewiHandler: gewiHandler,
@@ -51,11 +49,11 @@ export class CommandService {
         private readonly monthchatHandler: monthchatHandler,
         private readonly alldayschatHandler: alldaysChatHandler,
         private readonly coinnessAlarmHandler: coinnessAlarmHandler,
-        private readonly superwalkAlarmHandler: superwalkAlarmHandler,
         private readonly marketingHandler: marketingHandler,
         private readonly announceHandler: announceHandler,
         private readonly nftRegisterHandler: nftRegisterHandler,
-        private readonly nftInfoHandler: nftInfoHandler,
+        private readonly openseaInfoHandler: openseaInfoHandler,
+        private readonly magicEdenInfoHandler: magicEdenInfoHandler,
         private readonly nftListHandler: nftListHandler,
         private readonly dayRoomRankHandler: dayRoomRankHandler,
         private readonly korIpoHandler: korIpoHandler,
@@ -64,7 +62,9 @@ export class CommandService {
         private readonly fidelionNftInfoHandler: fidelionNftInfoHandler,
         private readonly fidelLionLevelHandler: fidelLionLevelHandler,
         private readonly fidelCombinationHandler: fidelCombinationHandler,
-        private readonly fidelSimulationHandler: fidelSimulationHandler
+        private readonly fidelSimulationHandler: fidelSimulationHandler,
+        private readonly ahoyCoinInfoHandler: ahoyCoinInfoHandler,
+        private readonly longShortHandler: longShortHandler
 
     ) {
         this.commandHandlers = [
@@ -76,7 +76,8 @@ export class CommandService {
             charmHandler,
             currencyHandler,
             korStockHandler,
-            coinHandler,
+            cexHandler,
+            dexHandler,
             domiHandler,
             gimpHandler,
             gewiHandler,
@@ -90,11 +91,11 @@ export class CommandService {
             monthchatHandler,
             alldayschatHandler,
             coinnessAlarmHandler,
-            superwalkAlarmHandler,
             marketingHandler,
             announceHandler,
             nftRegisterHandler,
-            nftInfoHandler,
+            openseaInfoHandler,
+            magicEdenInfoHandler,
             nftListHandler,
             dayRoomRankHandler,
             korIpoHandler,
@@ -104,7 +105,8 @@ export class CommandService {
             fidelLionLevelHandler,
             fidelCombinationHandler,
             fidelSimulationHandler,
-            exchangeHandler,
+            ahoyCoinInfoHandler,
+            longShortHandler,
         ];
     }
 

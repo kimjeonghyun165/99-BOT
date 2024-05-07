@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Message } from '@remote-kakao/core';
-import { krwtooUsd } from 'src/lib/utils';
+import { krwtoUsd } from 'src/lib/utils';
 import { usdtInfo, walkInfo } from '../tokenInfo'
 import { costBoostWalk, costSweat, costTime, costWalk, rarecostSweat, epiccostSweat, uniquecostSweat, legendarycostSweat } from './levelData'
 
@@ -16,7 +16,7 @@ export class superWalkLevelHandler {
 
     async execute(msg: Message): Promise<void> {
         try {
-            const currency = await krwtooUsd()
+            const currency = await krwtoUsd()
             const walkPrice = (await walkInfo()).walkPrice[0] / currency
             const rarity = msg.content.slice(4).split(" ")[0];
             const startLv = Number(msg.content.slice(7).split("~")[0]);

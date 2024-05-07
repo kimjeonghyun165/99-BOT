@@ -30,7 +30,7 @@ const tokenInfo = async (tokenAddress: string) => {
 const krwInfo = async () => {
     try {
         const html = await axios.get(krw);
-        const currency = await html.data["KRW"];
+        const currency = await html.data["KRW_BITHUMB"];
 
         return await currency;
     } catch (e) {

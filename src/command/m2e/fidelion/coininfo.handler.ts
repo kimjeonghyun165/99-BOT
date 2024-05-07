@@ -40,7 +40,6 @@ export class fidelionCoinInfoHandler {
                         ? "📉" + sol.solRate
                         : "📊" + sol.solRate;
 
-
             var output = "[Fidelion Info]\n";
             output += "━━━━━━━━━━━━━━\n";
             output +=

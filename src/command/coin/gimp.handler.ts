@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Message } from '@remote-kakao/core';
-import { krwtoUsd } from 'src/lib/utils';
+import { krwtooUsd } from 'src/lib/utils';
 import axios from 'axios';
 
 const baseUrl = "https://api.upbit.com/v1/ticker?markets=";
@@ -28,7 +28,7 @@ export class gimpHandler {
             const binanceXrp = await axios.get(binanceUrl + "XRPUSDT");
             const binanceSol = await axios.get(binanceUrl + "SOLUSDT");
 
-            var currency: number = await krwtoUsd();
+            var currency: number = await krwtooUsd();
 
             const upbitBtcPrice: number = upbitBtc.data[0].trade_price;
             const upbitEthPrice: number = upbitEth.data[0].trade_price;

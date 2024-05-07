@@ -2,18 +2,19 @@ import { Logger } from "@nestjs/common";
 import axios from 'axios';
 
 
-const tokenInfo = async (tokenTikcer: string) => {
+const tokenInfo = async (tokenTikcer: string, chain: string) => {
     try {
 
         const API_KEY = process.env.BIRDEYE_API_TOKEN
 
         const config = {
             headers: {
-                'X-API-KEY': API_KEY
+                'X-API-KEY': API_KEY,
+                'x-chain': chain
             }
         };
         const birdeyeApiLink =
-            "https://public-api.birdeye.so/public/multi_price?list_address=" + tokenTikcer
+            "https://public-api.birdeye.so/defi/multi_price?list_address=" + tokenTikcer
 
         const html = await axios.get(birdeyeApiLink, config)
 

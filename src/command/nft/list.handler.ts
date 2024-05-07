@@ -2,8 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Message } from '@remote-kakao/core';
 import { Model } from 'mongoose';
-import { nftInfo } from 'src/lib/utils';
-import { Opensea } from './opensea.schemas';
+import { Opensea } from './nft.schemas';
 
 @Injectable()
 export class nftListHandler {
