@@ -7,6 +7,7 @@ const mexc = require("../../lib/cex/mexc").tokenInfo;
 const birdeye = require("../../lib/others/birdeye").tokenInfo;
 const upbit = require("../../lib/cex/upbit").tokenInfo;
 const coinone = require("../../lib/cex/coinone").tokenInfo;
+const dexscreener = require("../../lib/others/dexscreener").tokenInfo
 
 const toothpasteContract = "Dwri1iuy5pDFf2u2GwwsH2MxjR6dATyDv9En9Jk8Fkof";
 const dedContract = "7raHqUrZXAqtxFJ2wcmtpH7SQYLeN9447vD4KhZM7tcP"
@@ -149,10 +150,10 @@ const awmInfo = async () => {
 
 const toothpasteInfo = async () => {
     try {
-        const toothpasteInfo = await birdeye(toothpasteContract, "solana")
+        const toothpasteInfo = await dexscreener(toothpasteContract)
 
-        const toothpastePrice: number = toothpasteInfo.currentUsdPirce
-        const toothpasteRate: string = toothpasteInfo.changeRate.toFixed(2);
+        const toothpastePrice: number = Number(toothpasteInfo.currentUsdPrice)
+        const toothpasteRate: string = Number(toothpasteInfo.changeRate).toFixed(2);
 
         return {
             toothpastePrice,
@@ -178,10 +179,10 @@ const solInfo = async () => {
 
 const dedInfo = async () => {
     try {
-        const dedInfo = await birdeye(dedContract, "solana")
+        const dedInfo = await dexscreener(dedContract)
 
-        const dedPrice: number = dedInfo.currentUsdPirce
-        const dedRate: string = dedInfo.changeRate.toFixed(2);
+        const dedPrice: number = Number(dedInfo.currentUsdPrice)
+        const dedRate: string = Number(dedInfo.changeRate).toFixed(2);
 
         return {
             dedPrice,
@@ -195,10 +196,10 @@ const dedInfo = async () => {
 
 const ahoyInfo = async () => {
     try {
-        const ahoyInfo = await birdeye(ahoyContract, "bsc")
+        const ahoyInfo = await dexscreener(ahoyContract)
 
-        const ahoyPrice: number = ahoyInfo.currentUsdPirce
-        const ahoyRate: string = ahoyInfo.changeRate.toFixed(2);
+        const ahoyPrice: number = Number(ahoyInfo.currentUsdPrice)
+        const ahoyRate: string = Number(ahoyInfo.changeRate).toFixed(2);
 
         return {
             ahoyPrice,
@@ -224,10 +225,10 @@ const usdtInfo = async () => {
 
 const gmtInfo = async () => {
     try {
-        const gmtInfo = await birdeye(gmtContract, "solana")
+        const gmtInfo = await dexscreener(gmtContract)
 
-        const gmtPrice: number = gmtInfo.currentUsdPirce
-        const gmtRate: string = gmtInfo.changeRate.toFixed(2);
+        const gmtPrice: number = Number(gmtInfo.currentUsdPrice)
+        const gmtRate: string = Number(gmtInfo.changeRate).toFixed(2);
 
         return {
             gmtPrice,
@@ -238,10 +239,10 @@ const gmtInfo = async () => {
 
 const gstInfo = async () => {
     try {
-        const gstInfo = await birdeye(gstContract, "solana")
+        const gstInfo = await dexscreener(gstContract)
 
-        const gstPrice: number = gstInfo.currentUsdPirce
-        const gstRate: string = gstInfo.changeRate.toFixed(2);
+        const gstPrice: number = Number(gstInfo.currentUsdPrice)
+        const gstRate: string = Number(gstInfo.changeRate).toFixed(2);
 
         return {
             gstPrice,

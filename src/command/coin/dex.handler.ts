@@ -15,8 +15,6 @@ export class dexHandler {
         try {
             var coin = msg.content.slice(2);
             const coinInfo = await dexscreener(coin)
-            let mint = coinInfo.mintable === 1 ? "✅ NO MINT" : coinInfo.mintable === 0 ? "❗NO MINT" : "❓Unknown";
-            let freeze = coinInfo.freeze === 1 ? "✅ NO FREEZE" : coinInfo.freeze === 0 ? "❗NO FREEZE" : "❓Unknown";
 
             let output = "[" + coinInfo.name + "/" + coinInfo.symbol + "]"
             output += "\n\n⛓️Dex : " + coinInfo.chainId + " @ " + coinInfo.dexId
@@ -25,9 +23,9 @@ export class dexHandler {
             output += "\n📈24h : " + coinInfo.changeRate.toLocaleString('en') + "%"
             output += "\n💧Liq : " + coinInfo.liq.toLocaleString('en') + "$"
             output += "\n📊Vol : " + coinInfo.vol.toLocaleString('en') + "$"
-            output += "\n💰️Fdv : " + coinInfo.fullySupply.toLocaleString('en') + "$"
-            output += "\n🤔Opt : " + mint + " | " + freeze
-            output += "\n🔥Burn : " + coinInfo.burn * 100 + " %"
+            output += "\n💰️Mc : " + coinInfo.fullySupply.toLocaleString('en') + "$"
+            output += coinInfo.opt3
+            output += "\n🤔Opt : " + coinInfo.opt1 + " | " + coinInfo.opt2
 
             output += "\n\n" + coinInfo.url
 

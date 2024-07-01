@@ -2,8 +2,9 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Message } from '@remote-kakao/core';
 import { Model } from 'mongoose';
+import { usdtInfo } from 'src/command/m2e/tokenInfo';
 import { tokenInfo } from 'src/lib/cex/binance';
-import { krwtoUsd, openseaInfo } from 'src/lib/utils'
+import { openseaInfo } from 'src/lib/utils'
 import { Opensea } from '../nft.schemas';
 
 
@@ -14,8 +15,8 @@ export class openseaInfoHandler {
         @InjectModel('Opensea') private readonly openseaModel: Model<Opensea>,
     ) { }
 
-    name = '오 '
-    regex = new RegExp(`^오 `);
+    name = '옾 '
+    regex = new RegExp(`^옾 `);
 
     test(content: string): boolean {
         return this.regex.test(content);
@@ -39,8 +40,8 @@ export class openseaInfoHandler {
             const owner = data.num_owners;
             const count = data.sales;
             const tokenPrice = (await tokenInfo(chain))
-            const currency = await krwtoUsd()
-            const nftKrwPrice = ((tokenPrice.currentUsdPirce / currency) * floor_price).toFixed(1)
+            const currency = (await usdtInfo()).usdtPrice;
+            const nftKrwPrice = ((tokenPrice.currentUsdPirce * currency) * floor_price).toFixed(1)
 
             let output = "[" + projectName + "]\n\n";
             output += "발행량 : " + count + " 개\n";

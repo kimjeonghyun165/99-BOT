@@ -138,7 +138,9 @@ export class shrKrwtoCoinHandler {
                 const tokenMapping = {
                     'ㅂㅌ': 'btc',
                     'ㅇㄷ': 'eth',
-                    'ㅌㄷ': 'usdt'
+                    'ㅌㄷ': 'usdt',
+                    'ㅁㅌ': 'matic',
+                    'ㅂㄹ': 'bora'
                 };
                 const val = tokenMapping[token] || token;
                 const cryptoCoin = await coinmarketcap(val.toUpperCase());
